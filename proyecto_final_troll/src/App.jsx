@@ -59,10 +59,8 @@ function Nav(){
 }
 
 function Main(){
-  const [audio, setAudio] = useState("/src/assets/sonidos/FAH.mp3");
   function randomSound(){
-    const audioelemento = document.getElementById("audio")
-    let audios=[
+    const audios = [
       "AnornioLobato.mp3",
       "carlos3.mp3",
       "desaparecer.mp3",
@@ -74,10 +72,12 @@ function Main(){
       "piano.mp3",
       "pitido_coche.mp3",
       "risa.mp3"
-    ]
-    setAudio(audios[Math.floor(Math.random()*10)])
-
-    audioelemento.play()
+    ];
+    
+    const sonidoAleatorio = audios[Math.floor(Math.random() * audios.length)];
+    
+    const audio = new Audio(`/src/assets/sonidos/${sonidoAleatorio}`);
+    audio.play().catch(e => console.log("Error al reproducir (necesitas interactuar primero):", e));
   }
 
   return(
